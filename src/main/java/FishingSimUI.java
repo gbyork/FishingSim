@@ -8,8 +8,7 @@
  *
  * @author rando
  */
-import java.util.Timer;
-import java.util.TimerTask;
+
 import java.util.Random;
 import javax.swing.JOptionPane;
 public class FishingSimUI extends javax.swing.JFrame {
@@ -21,7 +20,7 @@ public class FishingSimUI extends javax.swing.JFrame {
     
     
  //Registering all river fish and their info
-    Fish Trout = new Fish("Trout","River","Common");
+    Fish Trout = new Fish("Rainbow Trout","River","Common");
     Fish Bass = new Fish("Bass","River","Common");
     Fish Catfish= new Fish("Catfish","River","Common");
     Fish Sturgeon = new Fish("Sturgeon","River","Rare");
@@ -333,10 +332,11 @@ public class FishingSimUI extends javax.swing.JFrame {
 
 
         if (Counter>3){
+            //chance element in catch
          Random rand = new Random();
          int randomNum = rand.nextInt((99 - 0) + 1) + 1;
          if (randomNum < 80){
-        
+            //randomizes common fish
          Random random = new Random();
          int index = random.nextInt(RiverFish.length);
          Counter=0;
@@ -348,13 +348,13 @@ public class FishingSimUI extends javax.swing.JFrame {
             
             
             
-        //registering when fish is caught
+        //registering when a common fish is caught
          
          if (RiverFish[index]=="Rainbow Trout")
           {
             
             TroutLabel.setText(Trout.getName() + ", Located in the " + Trout.getLocation() + ". This is a " + Trout.getRarity() + " fish");
-            // add to museum when open JOptionPane.showMessageDialog(this,(Bass.getName()+ ", " + Bass.getLocation()+ ", " + Bass.getRarity()));
+            
           }
           if (RiverFish[index]=="Bass")
           {
@@ -366,18 +366,19 @@ public class FishingSimUI extends javax.swing.JFrame {
           {
             
             CatfishLabel.setText(Catfish.getName() + ", Located in the " + Catfish.getLocation() + ". This is a " + Catfish.getRarity() + " fish");
-            // add to museum when open JOptionPane.showMessageDialog(this,(Bass.getName()+ ", " + Bass.getLocation()+ ", " + Bass.getRarity()));
+            
           }       
 
     
     } else {
+             // randomizes rare fish
           Random random = new Random();
           int index = random.nextInt(RareRiverFish.length);
           Counter=0;
           FishingBar.setValue(0); 
           
           JOptionPane.showMessageDialog(this,("What a catch! You caught a " + RareRiverFish[index]));
-        
+            // registers that a rare fish has been caught   
           if (RareRiverFish[index]=="Sturgeon")
           {
             
@@ -450,22 +451,23 @@ public class FishingSimUI extends javax.swing.JFrame {
     FishingBar.setValue(FishingBar.getValue()+25);
     
     if (Counter>3){
+        //chance elements in catch
         Random rand = new Random();
         int randomNum = rand.nextInt((99 - 0) + 1) + 1;
         if (randomNum < 95){
             
-        
+        //randomizes common fish
         Random random = new Random();
         int index = random.nextInt(OceanFish.length);
         
         JOptionPane.showMessageDialog(this,("Great job you caught a " + OceanFish[index]));
         
-    //listbox add oceanfish[index]
+    
         Counter=0;
         FishingBar.setValue(0);
         
           
-        
+        //registers that common fish has been caught
           if (OceanFish[index]=="Anchovy")
           {
             
@@ -486,11 +488,12 @@ public class FishingSimUI extends javax.swing.JFrame {
           }       
 
         }else{
+         // randomizes rare fish
           Random random = new Random();
           int index = random.nextInt(RareRiverFish.length);
           Counter=0;
           FishingBar.setValue(0); 
-          
+          // registers that a rare fish has been caught
           JOptionPane.showMessageDialog(this,("Woah!!! You lived to see the day you catch a " + RareOceanFish[index]));
         
           if (RareOceanFish[index]=="Blue Marlin")
@@ -508,7 +511,7 @@ public class FishingSimUI extends javax.swing.JFrame {
         }
         
     }
-    //"Anchovy","Mackerel","Clownfish","Marlin","Shark"
+    
     }//GEN-LAST:event_OceanReelActionPerformed
 
     private void ReelBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReelBackButtonActionPerformed
